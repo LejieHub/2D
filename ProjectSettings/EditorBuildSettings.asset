@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/menu.unity
     guid: 1ec8c74557e90e74394b44060435503b
   - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: de6163a7a844f6845a3aa8deb1a8f713
+  - enabled: 1
     path: Assets/Scenes/Mirror.unity
     guid: 355b97911c878e64ea286ec1f6656af8
   m_configObjects: {}
