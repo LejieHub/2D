@@ -57,7 +57,7 @@ public class GravityReverseTrigger : MonoBehaviour
         }
     }
 
-    void ReverseJumpForce(GameObject player, bool shouldReverse)
+    public void ReverseJumpForce(GameObject player, bool shouldReverse)
     {
         MonoBehaviour[] scripts = player.GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour script in scripts)
