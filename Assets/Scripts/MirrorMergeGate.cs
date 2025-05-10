@@ -7,7 +7,6 @@ public class MirrorMergeGate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 只处理拥有 MirrorTag 的对象
         if (other.GetComponent<MirrorTag>() != null)
         {
             Transform mirrorTransform = other.transform;
@@ -22,12 +21,15 @@ public class MirrorMergeGate : MonoBehaviour
                 // 重力同步
                 mainRb.gravityScale = mirrorRb.gravityScale;
 
-                // 缩放方向同步（整体翻转）
+                // 同步跳跃力
+                JumpForce(mirrorTransform.gameObject, mainPlayer);
+
+                // 缩放方向同步
                 Vector3 newScale = mainPlayer.transform.localScale;
                 newScale.y = mirrorTransform.localScale.y;
                 mainPlayer.transform.localScale = newScale;
 
-                // SpriteRenderer 视觉朝向同步（头朝下）
+                //sprite方向同步
                 SpriteRenderer mainSprite = mainPlayer.GetComponentInChildren<SpriteRenderer>();
                 SpriteRenderer mirrorSprite = mirrorTransform.GetComponentInChildren<SpriteRenderer>();
                 if (mainSprite != null && mirrorSprite != null)
@@ -36,8 +38,35 @@ public class MirrorMergeGate : MonoBehaviour
                 }
             }
 
-            // 销毁镜像体
             Destroy(other.gameObject);
+        }
+    }
+
+    // 同步跳跃
+    void JumpForce(GameObject source, GameObject target)
+    {
+        MonoBehaviour[] sourceScripts = source.GetComponents<MonoBehaviour>();
+        //遍历克隆体身上的组件，找到jumpforce相关的参数，同步给mainplayer
+        foreach (MonoBehaviour sourceScript in sourceScripts)
+        {
+            System.Type type = sourceScript.GetType();
+            System.Reflection.FieldInfo field = type.GetField("jumpForce",
+                System.Reflection.BindingFlags.Public |
+                System.Reflection.BindingFlags.NonPublic |
+                System.Reflection.BindingFlags.Instance);
+
+            if (field != null && field.FieldType == typeof(float))
+            {
+                //获取克隆体jumpforce直
+                float sourceValue = (float)field.GetValue(sourceScript);
+                //查找mainplayer身上的组件
+                MonoBehaviour targetScript = target.GetComponent(type) as MonoBehaviour;
+                if (targetScript != null)
+                {
+                    //把值写到mainplayer身上
+                    field.SetValue(targetScript, sourceValue);
+                }
+            }
         }
     }
 }
