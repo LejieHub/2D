@@ -1,36 +1,78 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class LevelTransition : MonoBehaviour
+public class LevelTransitionByName : MonoBehaviour
 {
-    [Tooltip("输入下一关的场景名称，或留空使用构建索引")]
-    public string nextSceneName;
+    [Header("关卡设置")]
+    [Tooltip("输入目标关卡的场景名称（区分大小写）")]
+    public string targetLevelName = "Level2";
+
+    [Header("玩家设置")]
+    [SerializeField] private string playerTag = "Player";
+
+    [Header("过渡效果")]
+    [Tooltip("淡入淡出持续时间（秒）")]
+    public float fadeDuration = 1f;
+    [Tooltip("需要渐变的CanvasGroup组件")]
+    public CanvasGroup fadeCanvasGroup;
+
+    [Header("调试")]
+    [SerializeField] private bool showDebugLogs = true;
+
+    private bool isTransitioning = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(playerTag) && !isTransitioning)
         {
-            LoadNextLevel();
+            if (showDebugLogs) Debug.Log("玩家触发了关卡传送");
+            StartCoroutine(TransitionRoutine());
         }
     }
 
-    public void LoadNextLevel()
+    private IEnumerator TransitionRoutine()
     {
-        if (!string.IsNullOrEmpty(nextSceneName))
+        isTransitioning = true;
+
+        // 淡出效果
+        if (fadeCanvasGroup != null)
         {
-            SceneManager.LoadScene(nextSceneName);
+            float timer = 0;
+            while (timer < fadeDuration)
+            {
+                fadeCanvasGroup.alpha = Mathf.Lerp(0, 1, timer / fadeDuration);
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            fadeCanvasGroup.alpha = 1;
+        }
+
+        // 加载新场景
+        if (IsSceneInBuildSettings(targetLevelName))
+        {
+            SceneManager.LoadScene(targetLevelName);
         }
         else
         {
-            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-            if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
-            {
-                Debug.LogWarning("已经是最后一关，将循环回第一关");
-                nextSceneIndex = 0;
-            }
-
-            SceneManager.LoadScene(nextSceneIndex);
+            Debug.LogError($"场景 {targetLevelName} 未添加到Build Settings！");
+            isTransitioning = false; // 重置状态
         }
     }
+
+    private bool IsSceneInBuildSettings(string sceneName)
+    {
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            var scenePath = SceneUtility.GetScenePathByBuildIndex(i);
+            var sceneNameInBuild = System.IO.Path.GetFileNameWithoutExtension(scenePath);
+            if (sceneNameInBuild == sceneName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+  
 }

@@ -14040,7 +14040,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794f1bf1d0611b842a44ee9ae6e4ed0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Level2
+  targetLevelName: Level2
+  playerTag: Player
+  fadeDuration: 1
+  fadeCanvasGroup: {fileID: 0}
+  showDebugLogs: 1
 --- !u!1001 &849314118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24693,7 +24697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repoint: {fileID: 865150457}
   m_player: {fileID: 422460675161301160}
-  scenePaths: Level1
+  scenePaths: Level2
 --- !u!4 &1863293962
 Transform:
   m_ObjectHideFlags: 0
