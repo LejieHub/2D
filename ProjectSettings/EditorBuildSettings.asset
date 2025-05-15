@@ -20,7 +20,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1_2.unity
     guid: de6163a7a844f6845a3aa8deb1a8f713
-  - enabled: 0
-    path: Assets/Scenes/Mirror.unity
-    guid: 355b97911c878e64ea286ec1f6656af8
+  - enabled: 1
+    path: Assets/Scenes/Level2_1.unity
+    guid: f1c58543214a6364b9884a164c97e802
+  - enabled: 1
+    path: Assets/Scenes/Level2_2.unity
+    guid: a0a6862166bc6094faa0a6db3a612afb
+  - enabled: 1
+    path: Assets/Scenes/Level 1_1repoint.unity
+    guid: d3d841570f74e164db93d0555d488a1f
+  - enabled: 1
+    path: Assets/Scenes/Level 1_2repoint.unity
+    guid: aa1b7c09f3497294b9c3116fbf72108a
+  - enabled: 1
+    path: Assets/Scenes/Level 2_2repoint.unity
+    guid: fda8d681322c58b45918156ca919879d
+  - enabled: 1
+    path: Assets/Scenes/Level 2_1repoint.unity
+    guid: 6a6697007ba8c2d49ad7cdd20adf6949
   m_configObjects: {}
