@@ -37,6 +37,12 @@ public class MirrorMergeGate : MonoBehaviour
                     mainSprite.flipY = mirrorSprite.flipY;
                 }
             }
+            // 清除主角在所有重力门中的缓存
+            GravityReverseTrigger[] gravityTriggers = FindObjectsOfType<GravityReverseTrigger>();
+            foreach (var trigger in gravityTriggers)
+            {
+                trigger.ForceClearGravityCache(mainPlayer);
+            }
 
             Destroy(other.gameObject);
         }

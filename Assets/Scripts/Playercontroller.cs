@@ -83,10 +83,12 @@ public class PlayerMovementController : MonoBehaviour
         }
 
         bool isGrounded = IsGrounded();
+        Debug.Log($"{gameObject.name} grounded: {isGrounded}");
         coyoteTimeCounter = isGrounded ? coyoteTime : Mathf.Max(coyoteTimeCounter - Time.deltaTime, 0);
 
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
         {
+            Debug.Log($"{gameObject.name} JUMP triggered!");
             Jump();
             jumpBufferCounter = 0;
         }

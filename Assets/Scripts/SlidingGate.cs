@@ -2,43 +2,69 @@ using UnityEngine;
 
 public class SlidingGate : MonoBehaviour
 {
-    [Header("门动画设置")]
-    public float closedHeight = 5f;     // 默认关闭时的高度
-    public float openHeight = 0.5f;     // 开启时的目标高度
-    public float animationSpeed = 5f;   // 移动速度
+    public enum SlideDirection
+    {
+        Vertical,
+        Horizontal
+    }
 
-    private float targetHeight;
-    private Vector3 basePosition;       // 固定底部位置
+    [Header("门动画设置")]
+    public SlideDirection direction = SlideDirection.Vertical;
+    public float closedSize = 5f;      // 关闭时的尺寸（高度或宽度）
+    public float openSize = 0.5f;      // 打开时的目标尺寸
+    public float animationSpeed = 5f;  // 动画速度
+
+    private float targetSize;
+    private Vector3 fixedPosition;     // 保持固定端的位置
 
     void Start()
     {
-        targetHeight = closedHeight;
+        targetSize = closedSize;
 
         Vector3 scale = transform.localScale;
-        basePosition = transform.position - new Vector3(0, scale.y / 2f, 0);
+
+        // 记录固定边位置（顶部或左侧）
+        if (direction == SlideDirection.Vertical)
+        {
+            fixedPosition = transform.position + new Vector3(0, scale.y / 2f, 0);
+        }
+        else
+        {
+            fixedPosition = transform.position - new Vector3(scale.x / 2f, 0, 0); // 固定左侧
+        }
     }
 
     void Update()
     {
         Vector3 scale = transform.localScale;
-        float currentHeight = scale.y;
-        float newHeight = Mathf.MoveTowards(currentHeight, targetHeight, Time.deltaTime * animationSpeed);
+        Vector3 position = transform.position;
 
-        // 更新缩放
-        scale.y = newHeight;
+        if (direction == SlideDirection.Vertical)
+        {
+            float current = scale.y;
+            float newValue = Mathf.MoveTowards(current, targetSize, Time.deltaTime * animationSpeed);
+            scale.y = newValue;
+            position = fixedPosition - new Vector3(0, newValue / 2f, 0);
+        }
+        else // Horizontal
+        {
+            float current = scale.x;
+            float newValue = Mathf.MoveTowards(current, targetSize, Time.deltaTime * animationSpeed);
+            scale.x = newValue;
+            position = fixedPosition + new Vector3(newValue / 2f, 0, 0);
+        }
+
         transform.localScale = scale;
-
-        // 更新位置以保持底部不变
-        transform.position = basePosition + new Vector3(0, newHeight / 2f, 0);
+        transform.position = position;
     }
 
     public void OpenGate()
     {
-        targetHeight = openHeight;
+        targetSize = openSize;
     }
 
     public void CloseGate()
     {
-        targetHeight = closedHeight;
+        targetSize = closedSize;
     }
 }
