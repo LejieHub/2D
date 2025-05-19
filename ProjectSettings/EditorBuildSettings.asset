@@ -27,9 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2_2.unity
     guid: a0a6862166bc6094faa0a6db3a612afb
   - enabled: 1
-    path: Assets/Scenes/Level 1_1repoint.unity
-    guid: d3d841570f74e164db93d0555d488a1f
-  - enabled: 1
     path: Assets/Scenes/Level 1_2repoint.unity
     guid: aa1b7c09f3497294b9c3116fbf72108a
   - enabled: 1
@@ -38,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 2_1repoint.unity
     guid: 6a6697007ba8c2d49ad7cdd20adf6949
+  - enabled: 1
+    path: Assets/Scenes/Level1_1re.unity
+    guid: 4e2a55cbee93282419c17818a9b07396
   m_configObjects: {}
