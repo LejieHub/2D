@@ -47,15 +47,12 @@ public class DirectionalMapTrigger : MonoBehaviour
 
     private void ToggleGroup(GameObject[] objects, TilemapRenderer[] tilemaps, bool state)
     {
-        // 处理GameObject
+        // 处理GameObject（不再修改active状态）
         foreach (GameObject obj in objects)
         {
             if (obj != null)
             {
-                // 设置物体激活状态
-                obj.SetActive(state);
-
-                // 控制所有SpriteRenderer组件
+                // 仅控制组件开关
                 SpriteRenderer[] spriteRenderers = obj.GetComponentsInChildren<SpriteRenderer>();
                 foreach (SpriteRenderer sr in spriteRenderers)
                 {
@@ -67,7 +64,7 @@ public class DirectionalMapTrigger : MonoBehaviour
             }
         }
 
-        // 处理Tilemap
+        // 处理Tilemap（保持不变）
         foreach (TilemapRenderer renderer in tilemaps)
         {
             if (renderer != null)
