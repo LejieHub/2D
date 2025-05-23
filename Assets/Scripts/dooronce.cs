@@ -1,13 +1,12 @@
-// GateController.cs
 using UnityEngine;
 
 public class GateController : MonoBehaviour
 {
-    public enum AnchorPoint { Bottom, Top, Center }
+    public enum AnchorPoint { Left, Right, Bottom, Top, Center }
 
     [Header("Compression Settings")]
-    public AnchorPoint anchor = AnchorPoint.Bottom;
-    public Vector2 compressionScale = new Vector2(1f, 0.2f);
+    public AnchorPoint anchor = AnchorPoint.Left;
+    public Vector2 compressionScale = new Vector2(0.2f, 1f);
     public float compressionDuration = 1f;
 
     private Vector3 originalScale;
@@ -37,20 +36,34 @@ public class GateController : MonoBehaviour
             originalScale.z
         );
 
-        // 根据锚点计算位置偏移
-        float heightDifference = originalScale.y - targetScale.y;
         Vector3 positionOffset = Vector3.zero;
+        float scaleDifference;
 
+        // 精确计算边缘锚点偏移
         switch (anchor)
         {
+            case AnchorPoint.Left:
+                scaleDifference = originalScale.x - targetScale.x;
+                positionOffset = Vector3.left * (scaleDifference * 0.5f);
+                break;
+
+            case AnchorPoint.Right:
+                scaleDifference = originalScale.x - targetScale.x;
+                positionOffset = Vector3.right * (scaleDifference * 0.5f);
+                break;
+
             case AnchorPoint.Bottom:
-                positionOffset = Vector3.down * (heightDifference / 2f);
+                scaleDifference = originalScale.y - targetScale.y;
+                positionOffset = Vector3.down * (scaleDifference * 0.5f);
                 break;
+
             case AnchorPoint.Top:
-                positionOffset = Vector3.up * (heightDifference / 2f);
+                scaleDifference = originalScale.y - targetScale.y;
+                positionOffset = Vector3.up * (scaleDifference * 0.5f);
                 break;
+
             case AnchorPoint.Center:
-                // 位置保持不变
+                // 中心锚点不需要偏移
                 break;
         }
 
@@ -59,17 +72,22 @@ public class GateController : MonoBehaviour
         while (elapsedTime < compressionDuration)
         {
             float t = elapsedTime / compressionDuration;
-
-            // 同时进行缩放和位置插值
             transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
             transform.position = Vector3.Lerp(originalPosition, targetPosition, t);
-
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        // 确保最终状态精确
         transform.localScale = targetScale;
         transform.position = targetPosition;
         isCompressed = true;
+    }
+
+    public void ResetGate()
+    {
+        transform.localScale = originalScale;
+        transform.position = originalPosition;
+        isCompressed = false;
     }
 }
