@@ -1,28 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    [Header("Player Settings")]
     public Transform repoint;
     public GameObject m_player;
-    public string scenePaths;
-    // Start is called before the first frame update
-    void Start()
-    {
+    public MonoBehaviour playerMovementScript; // 玩家控制脚本（比如PlayerMovement）
 
-        LoadCheckpoint(); // 在游戏开始时加载存档点
-        m_player.transform.position = repoint.position;
+    [Header("Scene Settings")]
+    public string scenePaths;
+    public GameObject deathUI;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        LoadCheckpoint();
+        if (m_player != null && repoint != null)
+        {
+            m_player.transform.position = repoint.position;
+        }
+
+        // 初始化隐藏死亡UI
+        if (deathUI != null) deathUI.SetActive(false);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            restart();
+            Restart();
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -31,26 +51,44 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // 新增的死亡功能
+    public void PlayerDied()
+    {
+        // 禁用玩家控制
+        if (playerMovementScript != null)
+            playerMovementScript.enabled = false;
+
+        // 显示死亡UI
+        if (deathUI != null)
+            deathUI.SetActive(true);
+
+        // 暂停游戏
+        Time.timeScale = 0f;
+    }
+
+    // 修改后的重启方法
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // 保留原有功能
     public void Quit()
     {
         Application.Quit();
         Debug.Log("Quit");
     }
-    public void start()
+
+    public void StartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(1);
-        Time.timeScale = 1f;
-
-    }
-    public void restart()
-    {
-        SceneManager.LoadScene(scenePaths);
-        Time.timeScale = 1f;
     }
 
-    public void mainmenu()
+    public void MainMenu()
     {
-
+        Time.timeScale = 1f;
         SceneManager.LoadScene("menu");
     }
 
@@ -63,14 +101,10 @@ public class GameManager : MonoBehaviour
             float z = PlayerPrefs.GetFloat("CheckpointZ");
 
             Vector3 checkpointPosition = new Vector3(x, y, z);
-
-            // 将玩家的位置设置为存档点的位置
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
+            if (m_player != null)
             {
-                player.transform.position = checkpointPosition;
+                m_player.transform.position = checkpointPosition;
             }
         }
     }
-
 }
