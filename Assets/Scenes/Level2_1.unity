@@ -24318,19 +24318,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5314090809844826337, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.950026
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5314090809844826337, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.07897958
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5314090809844826337, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.29133895
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5314090809844826337, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07958968
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5314090809844826337, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -24342,15 +24342,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5314090809844826337, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -11.329
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5314090809844826337, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -33.486
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5314090809844826337, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -6.159
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8287280014920887501, guid: f7a887a65284e5f43aff3fcc171b8c68, type: 3}
       propertyPath: m_Enabled
@@ -38506,7 +38506,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repoint: {fileID: 865150457}
   m_player: {fileID: 977938876}
+  playerMovementScript: {fileID: 0}
   scenePaths: Level2_1
+  deathUI: {fileID: 0}
 --- !u!4 &1863293962
 Transform:
   m_ObjectHideFlags: 0
