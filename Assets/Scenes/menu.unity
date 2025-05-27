@@ -367,7 +367,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1543805727}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: start
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -625,7 +625,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repoint: {fileID: 0}
   m_player: {fileID: 0}
+  playerMovementScript: {fileID: 0}
   scenePaths: 
+  deathUI: {fileID: 0}
 --- !u!4 &1543805728
 Transform:
   m_ObjectHideFlags: 0
