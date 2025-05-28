@@ -45364,7 +45364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794f1bf1d0611b842a44ee9ae6e4ed0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLevelName: Level2_2
+  targetLevelName: Level2_2 (revised)
   playerTag: Player
   fadeDuration: 0.6
   fadeCanvasGroup: {fileID: 2017176819}
@@ -45646,7 +45646,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repoint: {fileID: 865150457}
   m_player: {fileID: 422460675161301160}
+  playerMovementScript: {fileID: 0}
   scenePaths: Level 2_1repoint
+  deathUI: {fileID: 0}
 --- !u!4 &1863293962
 Transform:
   m_ObjectHideFlags: 0
