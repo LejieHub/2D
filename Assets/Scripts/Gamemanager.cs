@@ -8,17 +8,30 @@ public class GameManager : MonoBehaviour
     [Header("Player Settings")]
     public Transform repoint;
     public GameObject m_player;
-    public MonoBehaviour playerMovementScript; // 玩家控制脚本（比如PlayerMovement）
+    public MonoBehaviour playerMovementScript;
 
     [Header("Scene Settings")]
     public string scenePaths;
     public GameObject deathUI;
+
+    [Header("Audio Settings")]
+    public AudioClip backgroundMusic;  // 新增背景音乐字段
+
+    private AudioSource audioSource;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);  // 保持跨场景播放
+
+            // 初始化音频组件
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
         }
         else
         {
@@ -28,14 +41,29 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        InitializeAudio();
         LoadCheckpoint();
+
         if (m_player != null && repoint != null)
         {
             m_player.transform.position = repoint.position;
         }
 
-        // 初始化隐藏死亡UI
         if (deathUI != null) deathUI.SetActive(false);
+    }
+
+    void InitializeAudio()
+    {
+        if (backgroundMusic != null && audioSource != null)
+        {
+            audioSource.clip = backgroundMusic;
+            audioSource.loop = true;
+            audioSource.playOnAwake = false;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
     }
 
     void Update()
@@ -51,29 +79,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 新增的死亡功能
     public void PlayerDied()
     {
-        // 禁用玩家控制
         if (playerMovementScript != null)
             playerMovementScript.enabled = false;
 
-        // 显示死亡UI
         if (deathUI != null)
             deathUI.SetActive(true);
 
-        // 暂停游戏
         Time.timeScale = 0f;
     }
 
-    // 修改后的重启方法
     public void Restart()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // 保留原有功能
     public void Quit()
     {
         Application.Quit();
