@@ -24947,6 +24947,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a50a4288d7e1e54696084811d6b8976, type: 3}
+--- !u!1 &853245973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8974522741356294576, guid: 2a50a4288d7e1e54696084811d6b8976, type: 3}
+  m_PrefabInstance: {fileID: 853245972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &860157540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38942,7 +38947,8 @@ MonoBehaviour:
   m_player: {fileID: 977938876}
   playerMovementScript: {fileID: 0}
   scenePaths: Level1_1
-  deathUI: {fileID: 0}
+  deathUI: {fileID: 853245973}
+  backgroundMusic: {fileID: 8300000, guid: 994d00fb5c4c0d543ace58cac2d79692, type: 3}
 --- !u!4 &1863293962
 Transform:
   m_ObjectHideFlags: 0
