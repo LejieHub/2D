@@ -124,8 +124,9 @@ public class PlayerMovementController : MonoBehaviour
 
     void Jump()
     {
+        Vector2 jumpDirection = rb.gravityScale > 0 ? Vector2.up : Vector2.down;
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        rb.AddForce(jumpDirection * Mathf.Abs(jumpForce), ForceMode2D.Impulse);
         coyoteTimeCounter = 0;
     }
 
