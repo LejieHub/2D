@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PlayerAnimationController : MonoBehaviour
+public class PlayerAnimator : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded;
     private bool isOnWall;
 
     [Header("检测参数")]
@@ -22,22 +22,22 @@ public class PlayerAnimationController : MonoBehaviour
     void Update()
     {
         // 检测是否在地面或墙上
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-        isOnWall = Physics2D.OverlapCircle(wallCheck.position, 0.1f, wallLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
+        isOnWall = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
 
         // 处理水平移动和动画
         float moveInput = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
         // 处理跳跃
-        if (Input.GetButtonDown("Jump") && (isGrounded || isOnWall))
+        if (Input.GetButtonDown("Jump") && isGrounded) 
         {
-            rb.velocity = new Vector2(rb.velocity.x, 10f); // 跳跃力
-            animator.SetBool("IsJumping", true);
+            //rb.velocity = new Vector2(rb.velocity.x, 10f); // 跳跃力
+            animator.SetBool("IsClimbing", true);
         }
 
         // 落地后重置跳跃状态
-        if (isGrounded || isOnWall)
+        if (isGrounded)
         {
             animator.SetBool("IsJumping", false);
         }
