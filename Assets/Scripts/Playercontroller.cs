@@ -40,6 +40,8 @@ public class PlayerMovementController : MonoBehaviour
     private float fakeHorizontal = 0f;
     private bool fakeJump = false;
 
+  
+
     public void SetMirrorInput(float hInput, bool jumpPressed)
     {
         useFakeInput = true;
@@ -64,6 +66,8 @@ public class PlayerMovementController : MonoBehaviour
         audioSource = GetComponent<AudioSource>(); // 获取音频源组件
         rb.freezeRotation = true;
     }
+
+ 
 
     void Update()
     {
