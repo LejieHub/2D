@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 1065385458422682300}
   - component: {fileID: 5363615995494989813}
   - component: {fileID: 5586792904846319348}
-  - component: {fileID: 1721248964563518360}
   - component: {fileID: 1249334291110207402}
   m_Layer: 3
   m_Name: Player 1
@@ -410,6 +409,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   groundCheckRadius: 1
+  jumpSound: {fileID: 8300000, guid: 73ef6039aefafdd4993bb2167da14bb2, type: 3}
+  jumpSoundVolume: 0.7
+  playOnLanding: 0
 --- !u!114 &5586792904846319348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,19 +429,6 @@ MonoBehaviour:
   enableCameraShake: 1
   impulseSource: {fileID: 0}
   shakeForce: 1
---- !u!114 &1721248964563518360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8217186783202286483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cab81ebccf974cf448b7885fafb70c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 2c41cd5f49454d1469989f62912e0739, type: 3}
 --- !u!82 &1249334291110207402
 AudioSource:
   m_ObjectHideFlags: 0
@@ -450,9 +439,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 994d00fb5c4c0d543ace58cac2d79692, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.69
+  m_Volume: 0.506
   m_Pitch: 1
   Loop: 0
   Mute: 0
