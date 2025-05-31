@@ -17,10 +17,18 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float coyoteTime = 0.15f;
     [SerializeField] float jumpBufferTime = 0.2f;
 
-    [Header("Ground Check")]
-    [SerializeField] Transform groundCheck;
+    [Header("Ground Check - Point 1")]
+    [SerializeField] Transform groundCheck1;
+    [SerializeField] float groundCheckRadius1 = 0.2f;
+    [SerializeField] bool useGroundCheck1 = true;
+
+    [Header("Ground Check - Point 2")]
+    [SerializeField] Transform groundCheck2;
+    [SerializeField] float groundCheckRadius2 = 0.2f;
+    [SerializeField] bool useGroundCheck2 = true;
+
+    [Header("Ground Layer")]
     [SerializeField] LayerMask groundLayer;
-    [SerializeField] float groundCheckRadius = 0.2f;
 
     [Header("Jump Sound")] // 新增音效部分
     [SerializeField] AudioClip jumpSound;  // 跳跃音效
@@ -39,8 +47,6 @@ public class PlayerMovementController : MonoBehaviour
     private bool useFakeInput = false;
     private float fakeHorizontal = 0f;
     private bool fakeJump = false;
-
-  
 
     public void SetMirrorInput(float hInput, bool jumpPressed)
     {
@@ -66,8 +72,6 @@ public class PlayerMovementController : MonoBehaviour
         audioSource = GetComponent<AudioSource>(); // 获取音频源组件
         rb.freezeRotation = true;
     }
-
- 
 
     void Update()
     {
@@ -177,14 +181,41 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
+    // 改进的接地检测方法，支持多个检测点
     bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        // 如果第一个检测点启用且检测到地面，返回true
+        if (useGroundCheck1 && groundCheck1 != null &&
+            Physics2D.OverlapCircle(groundCheck1.position, groundCheckRadius1, groundLayer))
+        {
+            return true;
+        }
+
+        // 如果第二个检测点启用且检测到地面，返回true
+        if (useGroundCheck2 && groundCheck2 != null &&
+            Physics2D.OverlapCircle(groundCheck2.position, groundCheckRadius2, groundLayer))
+        {
+            return true;
+        }
+
+        // 两个检测点都没有检测到地面
+        return false;
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+
+        // 绘制第一个检测点
+        if (useGroundCheck1 && groundCheck1 != null)
+        {
+            Gizmos.DrawWireSphere(groundCheck1.position, groundCheckRadius1);
+        }
+
+        // 绘制第二个检测点
+        if (useGroundCheck2 && groundCheck2 != null)
+        {
+            Gizmos.DrawWireSphere(groundCheck2.position, groundCheckRadius2);
+        }
     }
 }
