@@ -1,9 +1,12 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(AudioSource))] // 添加AudioSource组件要求
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMovementController : MonoBehaviour
 {
+    [Header("Animation Controller")]
+    [SerializeField] PlayerAnimationController animationController;
+
     [Header("Movement Parameters")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float airMoveSpeed = 7f;
@@ -30,19 +33,19 @@ public class PlayerMovementController : MonoBehaviour
     [Header("Ground Layer")]
     [SerializeField] LayerMask groundLayer;
 
-    [Header("Jump Sound")] // 新增音效部分
-    [SerializeField] AudioClip jumpSound;  // 跳跃音效
+    [Header("Jump Sound")]
+    [SerializeField] AudioClip jumpSound;
     [Range(0, 1)]
-    [SerializeField] float jumpSoundVolume = 0.7f; // 音量控制
-    [SerializeField] bool playOnLanding = false; // 是否在落地时播放音效
+    [SerializeField] float jumpSoundVolume = 0.7f;
+    [SerializeField] bool playOnLanding = false;
 
     private Rigidbody2D rb;
-    private AudioSource audioSource; // 音频源组件
+    private AudioSource audioSource;
     private float horizontalInput;
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
     private bool _wasGrounded;
-    private bool _isJumping; // 跟踪跳跃状态
+    private bool _isJumping;
 
     private bool useFakeInput = false;
     private float fakeHorizontal = 0f;
@@ -59,22 +62,45 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (IsGrounded())
         {
+            Vector2 jumpDirection = rb.gravityScale > 0 ? Vector2.up : Vector2.down;
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(jumpDirection * Mathf.Abs(jumpForce), ForceMode2D.Impulse);
             coyoteTimeCounter = 0;
-            PlayJumpSound(); // 播放跳跃音效
+            PlayJumpSound();
+
+            // 触发跳跃动画
+            if (animationController != null)
+            {
+                animationController.TriggerJump();
+            }
+            else
+            {
+                TryFindAnimationController();
+            }
+
+            _isJumping = true;
         }
     }
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>(); // 获取音频源组件
+        audioSource = GetComponent<AudioSource>();
+        TryFindAnimationController();
         rb.freezeRotation = true;
+    }
+
+    void TryFindAnimationController()
+    {
+        if (animationController == null)
+        {
+            animationController = GetComponent<PlayerAnimationController>();
+        }
     }
 
     void Update()
     {
+        // 输入处理
         if (useFakeInput)
         {
             horizontalInput = fakeHorizontal;
@@ -101,27 +127,42 @@ public class PlayerMovementController : MonoBehaviour
             }
         }
 
-        bool isGrounded = IsGrounded();
-        Debug.Log($"{gameObject.name} grounded: {isGrounded}");
-        coyoteTimeCounter = isGrounded ? coyoteTime : Mathf.Max(coyoteTimeCounter - Time.deltaTime, 0);
-
-        // 当落地且之前处于跳跃状态时
-        if (!_wasGrounded && isGrounded && playOnLanding && _isJumping)
+        // 更新移动速度动画参数
+        if (animationController != null)
         {
-            PlayJumpSound(); // 在落地时播放音效
-            _isJumping = false; // 重置跳跃状态
+            animationController.SetMoveSpeed(horizontalInput);
         }
 
-        // 保存当前帧的地面状态用于下一帧比较
+        bool isGrounded = IsGrounded();
+        coyoteTimeCounter = isGrounded ? coyoteTime : Mathf.Max(coyoteTimeCounter - Time.deltaTime, 0);
+
+        // 落地处理
+        if (!_wasGrounded && isGrounded)
+        {
+            if (playOnLanding && _isJumping)
+            {
+                PlayJumpSound();
+            }
+
+            // 重置跳跃状态
+            if (animationController != null && _isJumping)
+            {
+                animationController.ForceLandingCheck();
+            }
+
+            // 重置跳跃标记
+            _isJumping = false;
+        }
         _wasGrounded = isGrounded;
 
+        // 跳跃触发
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
         {
-            Debug.Log($"{gameObject.name} JUMP triggered!");
             Jump();
             jumpBufferCounter = 0;
         }
 
+        // 处理跳跃物理
         HandleJumpPhysics();
     }
 
@@ -151,23 +192,35 @@ public class PlayerMovementController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(jumpDirection * Mathf.Abs(jumpForce), ForceMode2D.Impulse);
         coyoteTimeCounter = 0;
-        PlayJumpSound(); // 播放跳跃音效
-        _isJumping = true; // 设置跳跃状态
+
+        // 触发跳跃动画
+        if (animationController != null)
+        {
+            animationController.TriggerJump();
+        }
+        else
+        {
+            TryFindAnimationController();
+        }
+
+        PlayJumpSound();
+        _isJumping = true;
     }
 
     void HandleJumpPhysics()
     {
+        // 下落速度调整
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
+        // 低跳跃速度调整
         else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 
-    // 播放跳跃音效的方法
     void PlayJumpSound()
     {
         if (jumpSound != null && audioSource != null)
@@ -177,28 +230,27 @@ public class PlayerMovementController : MonoBehaviour
         }
         else if (jumpSound != null)
         {
-            Debug.LogWarning("Jump sound is set but AudioSource component is missing");
+            Debug.LogWarning("Jump sound is set but AudioSource component is missing on " + gameObject.name, gameObject);
         }
     }
 
-    // 改进的接地检测方法，支持多个检测点
+    // 改进的接地检测方法
     bool IsGrounded()
     {
-        // 如果第一个检测点启用且检测到地面，返回true
+        // 第一个检测点
         if (useGroundCheck1 && groundCheck1 != null &&
             Physics2D.OverlapCircle(groundCheck1.position, groundCheckRadius1, groundLayer))
         {
             return true;
         }
 
-        // 如果第二个检测点启用且检测到地面，返回true
+        // 第二个检测点
         if (useGroundCheck2 && groundCheck2 != null &&
             Physics2D.OverlapCircle(groundCheck2.position, groundCheckRadius2, groundLayer))
         {
             return true;
         }
 
-        // 两个检测点都没有检测到地面
         return false;
     }
 
