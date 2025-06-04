@@ -20532,7 +20532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  reverseGravityScale: -3
+  reverseGravityScale: -2.7
 --- !u!483693784 &704789966 stripped
 TilemapRenderer:
   m_CorrespondingSourceObject: {fileID: 6434084292995407860, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}

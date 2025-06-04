@@ -37,7 +37,7 @@ public class DoorTransition : MonoBehaviour
         yield return new WaitForSeconds(transitionDuration / 3);
 
         // 第三阶段：淡出到白色
-        yield return StartCoroutine(FadeTransition(Color.white, 1, 0, transitionDuration / 3));
+        yield return StartCoroutine(FadeTransition(Color.black, 1, 0, transitionDuration / 3));
     }
 
     private IEnumerator FadeTransition(Color targetColor, float startAlpha, float endAlpha, float duration)

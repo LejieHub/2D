@@ -50878,6 +50878,7 @@ MonoBehaviour:
   - {fileID: 1425354089}
   - {fileID: 669587437}
   - {fileID: 1499109398}
+  - {fileID: 1156209056}
   leftTilemapsToEnable:
   - {fileID: 1161902099}
   - {fileID: 1741375294}
@@ -50902,6 +50903,7 @@ MonoBehaviour:
   - {fileID: 669587437}
   - {fileID: 1499109398}
   - {fileID: 1425354089}
+  - {fileID: 1156209056}
   rightTilemapsToDisable:
   - {fileID: 1161902099}
   - {fileID: 1741375294}
