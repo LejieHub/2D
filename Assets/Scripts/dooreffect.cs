@@ -31,7 +31,7 @@ public class DoorTransition : MonoBehaviour
         }
 
         // 第一阶段：淡入黑色
-        yield return StartCoroutine(FadeTransition(Color.black, 0, 1, transitionDuration / 3));
+        transitionOverlay.color = new Color(0, 0, 0, 1);
 
         // 第二阶段：保持黑色
         yield return new WaitForSeconds(transitionDuration / 3);
