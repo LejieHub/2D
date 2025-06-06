@@ -11,6 +11,15 @@ public class DoorController : MonoBehaviour
     public string requiredKeyID;
     public float openDuration = 1f;
 
+    [Header("UI 提示（无钥匙）")]
+    public CanvasGroup dialogueGroup;
+    public float fadeDuration = 0.5f;
+    public float displayDuration = 3f;
+
+    private Coroutine fadeRoutine;
+    private Coroutine displayTimer;
+
+
     [Header("移动设置")]
     [Tooltip("选择垂直或水平移动")]
     public MovementType movementType = MovementType.Vertical;
@@ -34,6 +43,13 @@ public class DoorController : MonoBehaviour
         StoreOriginalPosition();
         InitializeColliders();
         CalculateMovementDistance();
+        if (dialogueGroup != null)
+        {
+            dialogueGroup.alpha = 0;
+            dialogueGroup.interactable = false;
+            dialogueGroup.blocksRaycasts = false;
+        }
+
     }
 
     void InitializeComponents()
@@ -89,8 +105,45 @@ public class DoorController : MonoBehaviour
         else
         {
             StartCoroutine(ShakeDoor());
+            StartDialogueFeedback();  // 显示提示UI
         }
     }
+
+    void StartDialogueFeedback()
+    {
+        if (dialogueGroup == null) return;
+
+        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+        fadeRoutine = StartCoroutine(FadeUI(1, fadeDuration));
+
+        if (displayTimer != null) StopCoroutine(displayTimer);
+        displayTimer = StartCoroutine(DisplayTimer());
+    }
+
+    IEnumerator DisplayTimer()
+    {
+        yield return new WaitForSeconds(displayDuration);
+        fadeRoutine = StartCoroutine(FadeUI(0, fadeDuration));
+    }
+
+    IEnumerator FadeUI(float targetAlpha, float duration)
+    {
+        float startAlpha = dialogueGroup.alpha;
+        float time = 0;
+
+        dialogueGroup.interactable = targetAlpha > 0.1f;
+        dialogueGroup.blocksRaycasts = targetAlpha > 0.1f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            dialogueGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / duration);
+            yield return null;
+        }
+
+        dialogueGroup.alpha = targetAlpha;
+    }
+
 
     IEnumerator OpenDoorAnimation()
     {

@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    
+
     // 修改后的重启方法
     public void Restart()
     {
