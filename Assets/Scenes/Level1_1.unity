@@ -39392,8 +39392,9 @@ MonoBehaviour:
   repoint: {fileID: 865150457}
   m_player: {fileID: 1883545188}
   playerMovementScript: {fileID: 1883545189}
-  scenePaths: Level1_1
   deathUI: {fileID: 853245973}
+  pauseUI: {fileID: 0}
+  scenePaths: Level1_1
 --- !u!4 &1863293962
 Transform:
   m_ObjectHideFlags: 0
