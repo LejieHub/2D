@@ -10,15 +10,21 @@ public class GameManager : MonoBehaviour
     public GameObject m_player;
     public MonoBehaviour playerMovementScript; // 玩家控制脚本（比如PlayerMovement）
 
+    [Header("UI Settings")]
+    public GameObject deathUI;
+    public GameObject pauseUI; // 新增暂停UI
+
     [Header("Scene Settings")]
     public string scenePaths;
-    public GameObject deathUI;
+
+    private bool isPaused = false;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject); // 确保跨场景时不销毁
         }
         else
         {
@@ -28,54 +34,82 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        InitializeUI();
         LoadCheckpoint();
-        if (m_player != null && repoint != null)
-        {
-            m_player.transform.position = repoint.position;
-        }
-
-        // 初始化隐藏死亡UI
-        if (deathUI != null) deathUI.SetActive(false);
+        PositionPlayer();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Restart();
-        }
+        HandleInput();
+    }
 
-        if (Input.GetKeyDown(KeyCode.P))
+    private void InitializeUI()
+    {
+        if (deathUI != null) deathUI.SetActive(false);
+        if (pauseUI != null) pauseUI.SetActive(false);
+    }
+
+    private void PositionPlayer()
+    {
+        if (m_player != null && repoint != null)
         {
-            PlayerPrefs.DeleteAll();
+            m_player.transform.position = repoint.position;
         }
     }
 
-    // 新增的死亡功能
+    private void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) Restart();
+        if (Input.GetKeyDown(KeyCode.P)) PlayerPrefs.DeleteAll();
+        if (Input.GetKeyDown(KeyCode.Escape)) TogglePause(); // ESC键切换暂停
+    }
+
+    // ==== 新增的暂停功能 ====
+    public void TogglePause()
+    {
+        if (deathUI != null && deathUI.activeSelf) return; // 死亡状态下不可暂停
+
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0f : 1f;
+
+        if (pauseUI != null) pauseUI.SetActive(isPaused);
+
+        // 切换玩家控制
+        if (playerMovementScript != null)
+            playerMovementScript.enabled = !isPaused;
+    }
+
+    // ==== 按钮调用的暂停/恢复方法 ====
+    public void PauseGame()
+    {
+        if (!isPaused) TogglePause();
+    }
+
+    public void ResumeGame()
+    {
+        if (isPaused) TogglePause();
+    }
+
+    // ==== 死亡功能 ====
     public void PlayerDied()
     {
-        // 禁用玩家控制
         if (playerMovementScript != null)
             playerMovementScript.enabled = false;
 
-        // 显示死亡UI
         if (deathUI != null)
             deathUI.SetActive(true);
 
-        // 暂停游戏
         Time.timeScale = 0f;
     }
 
-    
-
-    // 修改后的重启方法
+    // ==== 场景管理 ====
     public void Restart()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // 保留原有功能
     public void Quit()
     {
         Application.Quit();
