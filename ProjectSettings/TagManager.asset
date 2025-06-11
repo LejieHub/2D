@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - door
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -41,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1422607259
+    locked: 0
+  - name: Midground
+    uniqueID: 2163809733
+    locked: 0
+  - name: Character&Platform
+    uniqueID: 3647015871
+    locked: 0
+  - name: Foreground
+    uniqueID: 3316949367
     locked: 0
