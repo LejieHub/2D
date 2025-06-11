@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8310844556065386400}
   - component: {fileID: 6499436697215377476}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2015145235
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cd3a93edad81d2046973583533781e15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3935751623532019013}
   - component: {fileID: 8378624520478436692}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ParallaxController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,9 +114,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1875983876294238077}
-  - {fileID: 5562950110696626804}
   - {fileID: 8310844556065386400}
+  - {fileID: 5562950110696626804}
+  - {fileID: 1875983876294238077}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8378624520478436692
@@ -154,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5562950110696626804}
   - component: {fileID: 7779069081841061579}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Midground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,8 +214,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1463165243
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f3c7f46076564db4f96d605201cfc874, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875983876294238077}
   - component: {fileID: 8164281988761034209}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 5470635657558259400}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.474492, y: 1.1457593, z: 0.13788079}
+  m_LocalPosition: {x: 15.8, y: 1.4, z: 0.13788079}
   m_LocalScale: {x: 28.323982, y: 15.08656, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -298,8 +298,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1148715523
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2680c2eee984a9548b77bf9c4d1037d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
