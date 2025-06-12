@@ -29910,6 +29910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParallaxController
       objectReference: {fileID: 0}
+    - target: {fileID: 2621829198857293036, guid: 39423d25a9ebe0847aee50cfb5b283b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3935751623532019013, guid: 39423d25a9ebe0847aee50cfb5b283b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.753207

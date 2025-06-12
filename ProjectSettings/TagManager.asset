@@ -40,15 +40,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: background
-    uniqueID: 2279822061
-    locked: 0
-  - name: midlayer
-    uniqueID: 2831802053
-    locked: 0
-  - name: forelayer
-    uniqueID: 1148715523
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
