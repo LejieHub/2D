@@ -38,19 +38,19 @@ public class GravityReverseTrigger : MonoBehaviour
 
         float currentGravity = rb.gravityScale;
 
-        // 如果当前是正重力，反转
+        
         if (currentGravity > 0f)
         {
             originalGravities[player] = currentGravity;
             rb.gravityScale = reverseGravityScale;
             Debug.Log($"{player.name} → gravity reversed to {rb.gravityScale}");
         }
-        // 如果当前是反重力，恢复为默认正向
+        
         else if (currentGravity < 0f)
         {
             float restoredGravity = originalGravities.ContainsKey(player)
                 ? originalGravities[player]
-                : 1f; // 正确的默认值
+                : 1f; 
 
             rb.gravityScale = restoredGravity;
             Debug.Log($"{player.name} → gravity restored to {rb.gravityScale}");
