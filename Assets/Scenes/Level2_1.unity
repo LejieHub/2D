@@ -26687,7 +26687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.size
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightTilemapsToEnable.Array.data[0]
@@ -26707,6 +26707,10 @@ PrefabInstance:
       objectReference: {fileID: 1120385060}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightTilemapsToEnable.Array.data[4]
+      value: 
+      objectReference: {fileID: 59368576}
+    - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
+      propertyPath: rightTilemapsToEnable.Array.data[5]
       value: 
       objectReference: {fileID: 59368576}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
@@ -26804,35 +26808,35 @@ PrefabInstance:
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[2]
       value: 
-      objectReference: {fileID: 1020668743}
+      objectReference: {fileID: 975288201}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[3]
       value: 
-      objectReference: {fileID: 975288201}
+      objectReference: {fileID: 704789963}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[4]
       value: 
-      objectReference: {fileID: 704789963}
+      objectReference: {fileID: 625411093}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[5]
       value: 
-      objectReference: {fileID: 625411093}
+      objectReference: {fileID: 1904996113}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[6]
       value: 
-      objectReference: {fileID: 1904996113}
+      objectReference: {fileID: 852614649}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[7]
       value: 
-      objectReference: {fileID: 852614649}
+      objectReference: {fileID: 1015960211}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[8]
       value: 
-      objectReference: {fileID: 1015960211}
+      objectReference: {fileID: 1336350060}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[9]
       value: 
-      objectReference: {fileID: 1336350060}
+      objectReference: {fileID: 1020668743}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[10]
       value: 
@@ -27848,7 +27852,7 @@ PrefabInstance:
       objectReference: {fileID: 704789966}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightTilemapsToEnable.Array.data[0]
@@ -27989,7 +27993,7 @@ PrefabInstance:
     - target: {fileID: 8739965489435796647, guid: 24adc9f7d64c9cc4c92e5e9839afaa0b, type: 3}
       propertyPath: rightObjectsToDeactivate.Array.data[8]
       value: 
-      objectReference: {fileID: 852614649}
+      objectReference: {fileID: 1336350060}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -51941,6 +51945,7 @@ MonoBehaviour:
   - {fileID: 625411093}
   - {fileID: 852614649}
   - {fileID: 975288201}
+  - {fileID: 1336350060}
   rightTilemapsToEnable:
   - {fileID: 1664105195}
   - {fileID: 849314119}

@@ -80510,6 +80510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasEnter
       objectReference: {fileID: 0}
+    - target: {fileID: 7243809318793114052, guid: 1ba6e5d1e3cbd7143b437addda2bc515, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
