@@ -326,7 +326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: you are dead press restart to continue
+  m_text: You are dead press restart to continue!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - Am I the reflection, or the original?
+  - He left, but I remained.
   triggerOnce: 1
 --- !u!61 &105491965
 BoxCollider2D:
@@ -1263,6 +1263,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 771203124720082138, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce3896766c43c4014bfc40654c783024, type: 3}
     - target: {fileID: 3467295689310993304, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
       propertyPath: m_Name
       value: PLAYERRE
@@ -1274,6 +1278,26 @@ PrefabInstance:
     - target: {fileID: 3599188293435113556, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
       propertyPath: transitionDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.076
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9070836597455557283, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2927,6 +2951,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1362467519756350273, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 1362467519756350273, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 6881311957509569055, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_Name
       value: pause
@@ -3998,7 +4030,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.57022077, g: 0.8113208, b: 0.73022366, a: 0}
+  m_BackGroundColor: {r: 0.5686275, g: 0.6685681, b: 0.8117647, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4048,7 +4080,7 @@ Transform:
   m_GameObject: {fileID: 701486498}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.540892, y: -14.7, z: -10}
+  m_LocalPosition: {x: -16.519156, y: -14.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5352,7 +5384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.593, y: 0.864}
+  m_AnchoredPosition: {x: 0.719, y: 0.644}
   m_SizeDelta: {x: 2807.4575, y: 1942.3137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &857684025
@@ -46873,7 +46905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - "I\u2019m back where everything blurred."
+  - This is where my reflection started lying to me.
   triggerOnce: 1
 --- !u!61 &1039050279
 BoxCollider2D:
@@ -47375,7 +47407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - I understood...
+  - I understood.
   triggerOnce: 1
 --- !u!61 &1136551543
 BoxCollider2D:
@@ -78201,7 +78233,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1527156110
 RectTransform:
@@ -79635,6 +79667,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: pauseui
       objectReference: {fileID: 0}
+    - target: {fileID: 1816125055756778249, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 1816125055756778249, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
     - target: {fileID: 2958429087478321582, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -79714,6 +79754,14 @@ PrefabInstance:
     - target: {fileID: 2958429087478321582, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688258412630490207, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 3688258412630490207, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

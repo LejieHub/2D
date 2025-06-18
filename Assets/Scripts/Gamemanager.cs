@@ -27,10 +27,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject); // 确保跨场景时不销毁
             SceneManager.sceneLoaded += OnSceneLoaded; // 添加场景加载事件监听
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     private void OnDestroy()

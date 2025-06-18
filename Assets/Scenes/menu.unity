@@ -627,8 +627,9 @@ MonoBehaviour:
   repoint: {fileID: 0}
   m_player: {fileID: 0}
   playerMovementScript: {fileID: 0}
-  scenePaths: 
   deathUI: {fileID: 0}
+  pauseUI: {fileID: 0}
+  scenePaths: 
 --- !u!4 &1543805728
 Transform:
   m_ObjectHideFlags: 0
@@ -835,7 +836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Beyond the Portal
+  m_text: Door of the Mind
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
