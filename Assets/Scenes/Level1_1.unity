@@ -25148,7 +25148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - "This isn\u2019t escape. It\u2019s repetition."
+  - "I\u2019m not dreaming. I\u2019m just\u2026 stuck."
   triggerOnce: 1
 --- !u!61 &783064956
 BoxCollider2D:
