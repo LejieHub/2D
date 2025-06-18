@@ -28510,6 +28510,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: pauseui
       objectReference: {fileID: 0}
+    - target: {fileID: 1816125055756778249, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 1816125055756778249, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
     - target: {fileID: 2958429087478321582, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -28589,6 +28597,14 @@ PrefabInstance:
     - target: {fileID: 2958429087478321582, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688258412630490207, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 3688258412630490207, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30390,7 +30406,7 @@ Transform:
   m_GameObject: {fileID: 1347227885}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.933872, y: 16.44491, z: -10}
+  m_LocalPosition: {x: 42.955612, y: 16.44492, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30793,6 +30809,14 @@ PrefabInstance:
     - target: {fileID: 802404324144566700, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362467519756350273, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 1362467519756350273, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
       objectReference: {fileID: 0}
     - target: {fileID: 6881311957509569055, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_Name
@@ -52946,6 +52970,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.28739417
       objectReference: {fileID: 0}
+    - target: {fileID: 3048015265243254011, guid: afff405905a742a4ca6f58c61db9d34c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 3048015265243254011, guid: afff405905a742a4ca6f58c61db9d34c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 3048015265243254011, guid: afff405905a742a4ca6f58c61db9d34c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 3048015265243254011, guid: afff405905a742a4ca6f58c61db9d34c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5586792904846319348, guid: afff405905a742a4ca6f58c61db9d34c, type: 3}
       propertyPath: enableCameraShake
       value: 1
@@ -53006,6 +53046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8400972773635048952, guid: afff405905a742a4ca6f58c61db9d34c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce3896766c43c4014bfc40654c783024, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

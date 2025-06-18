@@ -48601,7 +48601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.5799999, y: 0.7743}
+  m_AnchoredPosition: {x: 0.756, y: 0.7743}
   m_SizeDelta: {x: 2807.4575, y: 1942.3137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &353782902
@@ -49618,7 +49618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - "I flipped the world so many times\u2026"
+  - I bent the rules. The world bent back.
   triggerOnce: 1
 --- !u!61 &628907733
 BoxCollider2D:
@@ -50182,7 +50182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - "Not this one. I suppose I\u2019m not ready."
+  - "No! Maybe I\u2019m not ready to see myself."
   triggerOnce: 1
 --- !u!61 &761152747
 BoxCollider2D:
@@ -51054,7 +51054,7 @@ Transform:
   m_GameObject: {fileID: 852712060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.1, y: 0.59999955, z: -0.03165585}
+  m_LocalPosition: {x: 9.99, y: 0.59999955, z: -0.03165585}
   m_LocalScale: {x: 5.3462496, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51703,6 +51703,10 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 771203124720082138, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce3896766c43c4014bfc40654c783024, type: 3}
     - target: {fileID: 3467295689310993304, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
       propertyPath: m_Name
       value: PLAYERRE
@@ -51714,6 +51718,38 @@ PrefabInstance:
     - target: {fileID: 3599188293435113556, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
       propertyPath: transitionDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665483479544660927, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8120221
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665483479544660927, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.07018393
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346546556556559272, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.304
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.614616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016174191780302409, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9070836597455557283, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53014,7 +53050,7 @@ Transform:
   m_GameObject: {fileID: 1347227885}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8107481, y: -1.13288, z: -10}
+  m_LocalPosition: {x: 0.7889972, y: -1.13286, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53840,6 +53876,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: pauseui
       objectReference: {fileID: 0}
+    - target: {fileID: 1816125055756778249, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 1816125055756778249, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
     - target: {fileID: 2958429087478321582, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -53919,6 +53963,14 @@ PrefabInstance:
     - target: {fileID: 2958429087478321582, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688258412630490207, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 3688258412630490207, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -80512,7 +80564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7243809318793114052, guid: 1ba6e5d1e3cbd7143b437addda2bc515, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -81832,7 +81884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - "I keep moving\u2026 \nbut am I arriving anywhere?"
+  - "I\u2019m rushing\u2026 but is there even a destination?"
   triggerOnce: 1
 --- !u!61 &1996307973
 BoxCollider2D:
@@ -81981,6 +82033,14 @@ PrefabInstance:
     - target: {fileID: 802404324144566700, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362467519756350273, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1863293961}
+    - target: {fileID: 1362467519756350273, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
       objectReference: {fileID: 0}
     - target: {fileID: 6881311957509569055, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_Name
@@ -82245,7 +82305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - Color is a privilege I almost forgot.
+  - "Time used to be vivid. Now it\u2019s just grayscale. "
   triggerOnce: 1
 --- !u!61 &2038366881
 BoxCollider2D:

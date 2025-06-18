@@ -164,6 +164,12 @@ public class PlayerMovementController : MonoBehaviour
 
         // 处理跳跃物理
         HandleJumpPhysics();
+
+        if (animationController != null && Mathf.Abs(horizontalInput) > 0.01f)
+        {
+            animationController.FlipSprite(horizontalInput > 0);
+        }
+
     }
 
     void FixedUpdate()

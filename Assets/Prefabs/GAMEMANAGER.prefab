@@ -47,5 +47,6 @@ MonoBehaviour:
   repoint: {fileID: 0}
   m_player: {fileID: 0}
   playerMovementScript: {fileID: 0}
-  scenePaths: Level
   deathUI: {fileID: 0}
+  pauseUI: {fileID: 0}
+  scenePaths: Level

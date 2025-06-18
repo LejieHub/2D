@@ -57,7 +57,8 @@ public class PlayerAnimator : MonoBehaviour
         // ½ÇÉ«³¯Ïò·­×ª
         if (moveInput != 0)
         {
-            transform.localScale = new Vector3(Mathf.Sign(moveInput), 1, 1);
+            float rotationY = (moveInput > 0) ? 0 : 180;
+            transform.rotation = Quaternion.Euler(0, rotationY, 0);
         }
     }
 }
