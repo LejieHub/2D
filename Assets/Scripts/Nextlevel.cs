@@ -4,9 +4,18 @@ using System.Collections;
 
 public class LevelTransitionByName : MonoBehaviour
 {
+    public bool mainLevel;
+
     [Header("关卡设置")]
     [Tooltip("输入目标关卡的场景名称（区分大小写）")]
     public string targetLevelName = "Level2";
+
+    [Header("钥匙设置")]
+    [Tooltip("是否需要钥匙才能进入")]
+    public bool requireKey = true;
+
+    [Tooltip("玩家需要拥有的钥匙ID才允许进入该门")]
+    public string requiredKeyID;
 
     [Header("玩家设置")]
     [SerializeField] private string playerTag = "Player";
@@ -22,11 +31,53 @@ public class LevelTransitionByName : MonoBehaviour
 
     private bool isTransitioning = false;
 
+    public GameObject player;
+
+    private bool isPlayerInTrigger = false;
+
+    private void Update()
+    {
+        if (isPlayerInTrigger && !isTransitioning && Input.GetKeyDown(KeyCode.F))
+        {
+            TryTransition();
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(playerTag) && !isTransitioning)
+        if (other.CompareTag(playerTag))
         {
-            if (showDebugLogs) Debug.Log("玩家触发了关卡传送");
+            isPlayerInTrigger = true;
+            player = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(playerTag))
+        {
+            isPlayerInTrigger = false;
+        }
+    }
+
+    private void TryTransition()
+    {
+        if (requireKey)
+        {
+            if (KeyManager.Instance.CheckKey(requiredKeyID))
+            {
+                if (showDebugLogs) Debug.Log("玩家拥有钥匙，触发传送");
+                StartCoroutine(TransitionRoutine());
+            }
+            else
+            {
+                if (showDebugLogs) Debug.LogWarning($"玩家缺少钥匙 {requiredKeyID}，无法通过");
+            }
+        }
+        else
+        {
+            if (showDebugLogs) Debug.Log("不需要钥匙，直接传送");
             StartCoroutine(TransitionRoutine());
         }
     }
@@ -35,7 +86,6 @@ public class LevelTransitionByName : MonoBehaviour
     {
         isTransitioning = true;
 
-        // 淡出效果
         if (fadeCanvasGroup != null)
         {
             float timer = 0;
@@ -48,15 +98,20 @@ public class LevelTransitionByName : MonoBehaviour
             fadeCanvasGroup.alpha = 1;
         }
 
-        // 加载新场景
+        if (player != null && mainLevel)
+        {
+            GameManager.Instance.lastPlayerPosition = player.transform.position;
+            GameManager.Instance.shouldLoadPosition = true;
+        }
+
         if (IsSceneInBuildSettings(targetLevelName))
         {
             SceneManager.LoadScene(targetLevelName);
         }
         else
         {
-            Debug.LogError($"场景 {targetLevelName} 未添加到Build Settings！");
-            isTransitioning = false; // 重置状态
+            Debug.LogError($"场景 {targetLevelName} 未添加到 Build Settings！");
+            isTransitioning = false;
         }
     }
 
@@ -73,6 +128,4 @@ public class LevelTransitionByName : MonoBehaviour
         }
         return false;
     }
-
-  
 }

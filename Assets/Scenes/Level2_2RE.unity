@@ -28903,6 +28903,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLevelName: Level1_1
+  requireKey: 1
+  requiredKeyID: 
   playerTag: Player
   fadeDuration: 0.6
   fadeCanvasGroup: {fileID: 2017176819}
@@ -29338,6 +29340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLevelName: Level3
+  requireKey: 0
+  requiredKeyID: 
   playerTag: Player
   fadeDuration: 0.6
   fadeCanvasGroup: {fileID: 2017176819}
@@ -29510,6 +29514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLevelName: Level1_2
+  requireKey: 1
+  requiredKeyID: 
   playerTag: Player
   fadeDuration: 0.6
   fadeCanvasGroup: {fileID: 2017176819}
@@ -51475,6 +51481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLevelName: Level2_2
+  requireKey: 1
+  requiredKeyID: 
   playerTag: Player
   fadeDuration: 0.6
   fadeCanvasGroup: {fileID: 2017176819}
@@ -52392,6 +52400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLevelName: Level2_1
+  requireKey: 1
+  requiredKeyID: 
   playerTag: Player
   fadeDuration: 0.6
   fadeCanvasGroup: {fileID: 2017176819}

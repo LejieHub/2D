@@ -1,13 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    [Header("Player Position")]
-    public Vector2 lastPlayerPosition;
-    public bool shouldLoadPosition;
-
+    
+    
 
     [Header("Player Settings")]
     public Transform repoint;
@@ -23,20 +22,7 @@ public class GameManager : MonoBehaviour
 
     private bool isPaused = false;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // 确保跨场景时不销毁
-            SceneManager.sceneLoaded += OnSceneLoaded; // 添加场景加载事件监听
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-    }
+    
 
     private void OnDestroy()
     {
@@ -187,7 +173,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(11);
     }
 
     public void MainMenu()
