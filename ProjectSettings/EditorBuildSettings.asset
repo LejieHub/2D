@@ -12,13 +12,16 @@ EditorBuildSettings:
     path: Assets/Scenes/menu.unity
     guid: 1ec8c74557e90e74394b44060435503b
   - enabled: 1
+    path: Assets/Scenes/hospitial.unity
+    guid: 06430d434ba271e488ab631a74fe3527
+  - enabled: 1
     path: Assets/Scenes/Level.unity
     guid: c3cc598c6938c7a43b1f6ec4131171f9
   - enabled: 1
     path: Assets/Scenes/Level1_1.unity
     guid: 811145907320ba94dbda18addbf9ee3c
   - enabled: 1
-    path: Assets/Scenes/Level1_1RE.unity
+    path: Assets/Scenes/Level1_1re.unity
     guid: c1b7289989a970f49ae0af1ad955cdb1
   - enabled: 1
     path: Assets/Scenes/Level1_2.unity
