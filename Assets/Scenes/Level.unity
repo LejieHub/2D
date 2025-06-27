@@ -31016,6 +31016,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: InputManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 508173638241217118, guid: 2a50a4288d7e1e54696084811d6b8976, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8974522741356294576, guid: 2a50a4288d7e1e54696084811d6b8976, type: 3}
       propertyPath: m_Name
       value: DeadSystem 1
@@ -54445,9 +54449,49 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: InputManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 6583622899240031070, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583622899240031070, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583622899240031070, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583622899240031070, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583622899240031070, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 273.5569
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583622899240031070, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 104.88794
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583622899240031070, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1834
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583622899240031070, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 675
+      objectReference: {fileID: 0}
     - target: {fileID: 6881311957509569055, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_Name
       value: PauseUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881311957509569055, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386264210010944516, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_text
+      value: "Game paused\n press ESC to continue"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
