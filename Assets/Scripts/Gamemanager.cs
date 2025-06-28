@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,7 +8,6 @@ public class GameManager : MonoBehaviour
     [Header("Player Position")]
     public Vector2 lastPlayerPosition;
     public bool shouldLoadPosition;
-
 
     [Header("Player Settings")]
     public Transform repoint;
@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     [Header("Scene Settings")]
     public string scenePaths;
 
+    [Header("Door State Management")]
+    public Dictionary<string, bool> doorStates = new Dictionary<string, bool>();
+
     private bool isPaused = false;
 
     private void Awake()
@@ -30,12 +33,12 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject); // 确保跨场景时不销毁
             SceneManager.sceneLoaded += OnSceneLoaded; // 添加场景加载事件监听
+            doorStates = new Dictionary<string, bool>(); // 初始化字典
         }
         else
         {
             Destroy(gameObject);
         }
-
     }
 
     private void OnDestroy()
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
         FindSceneReferences();
         InitializeUI();
         PositionPlayer();
+        RestoreDoorStates(); // 恢复门的状态
     }
 
     void Start()
@@ -58,6 +62,7 @@ public class GameManager : MonoBehaviour
         InitializeUI();
         LoadCheckpoint();
         PositionPlayer();
+        RestoreDoorStates(); // 确保开始时恢复门状态
     }
 
     void Update()
@@ -126,6 +131,63 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) TogglePause(); // ESC键切换暂停
     }
 
+    // ==== 门状态管理 ====
+    // 保存门的状态
+    public void SaveDoorState(string doorID, bool state)
+    {
+        if (doorStates.ContainsKey(doorID))
+        {
+            doorStates[doorID] = state;
+        }
+        else
+        {
+            doorStates.Add(doorID, state);
+        }
+
+        Debug.Log($"Saved door state: {doorID} = {state}");
+    }
+
+    // 获取门的状态
+    public bool GetDoorState(string doorID)
+    {
+        if (doorStates.ContainsKey(doorID))
+        {
+            return doorStates[doorID];
+        }
+        return false;
+    }
+
+    // 恢复所有门的状态
+    private void RestoreDoorStates()
+    {
+        // 获取场景中所有的SimpleSpriteSwitcher组件
+        SpriteSwitcher[] switchers = FindObjectsOfType<SpriteSwitcher>();
+
+        if (switchers == null || switchers.Length == 0) return;
+
+        Debug.Log($"Found {switchers.Length} door switches to restore");
+
+        foreach (var switcher in switchers)
+        {
+            // 创建唯一ID：场景名 + 对象名
+            string doorID = $"{SceneManager.GetActiveScene().name}_{switcher.gameObject.name}";
+            bool state = GetDoorState(doorID);
+
+            if (state)
+            {
+                switcher.SetDoorState(state);
+                Debug.Log($"Restored door {doorID}: {state}");
+            }
+        }
+    }
+
+    // 清空门状态（用于新游戏）
+    public void ClearDoorStates()
+    {
+        doorStates.Clear();
+        Debug.Log("Cleared all door states");
+    }
+
     // ==== 暂停功能 ====
     public void TogglePause()
     {
@@ -186,6 +248,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        ClearDoorStates(); // 新游戏时清除门状态
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
