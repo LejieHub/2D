@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject); // 确保跨场景时不销毁
             SceneManager.sceneLoaded += OnSceneLoaded; // 添加场景加载事件监听
             doorStates = new Dictionary<string, bool>(); // 初始化字典
+
+            // 调试：清除所有门状态
+            //ClearDoorStates();
         }
         else
         {
@@ -129,6 +132,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) Restart();
         if (Input.GetKeyDown(KeyCode.P)) PlayerPrefs.DeleteAll();
         if (Input.GetKeyDown(KeyCode.Escape)) TogglePause(); // ESC键切换暂停
+
+        // 调试：打印所有门状态
+        //if (Input.GetKeyDown(KeyCode.L)) LogAllDoorStates();
     }
 
     // ==== 门状态管理 ====
@@ -157,7 +163,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    // 恢复所有门的状态
+    // 恢复所有门的状态（关键修改部分）
     private void RestoreDoorStates()
     {
         // 获取场景中所有的SimpleSpriteSwitcher组件
@@ -169,14 +175,18 @@ public class GameManager : MonoBehaviour
 
         foreach (var switcher in switchers)
         {
-            // 创建唯一ID：场景名 + 对象名
-            string doorID = $"{SceneManager.GetActiveScene().name}_{switcher.gameObject.name}";
+            // 使用位置生成唯一ID
+            string doorID = switcher.GenerateDoorID();
             bool state = GetDoorState(doorID);
 
             if (state)
             {
                 switcher.SetDoorState(state);
-                Debug.Log($"Restored door {doorID}: {state}");
+                Debug.Log($"Restored door: {doorID}");
+            }
+            else
+            {
+                Debug.Log($"Door {doorID} not opened yet");
             }
         }
     }
@@ -186,6 +196,23 @@ public class GameManager : MonoBehaviour
     {
         doorStates.Clear();
         Debug.Log("Cleared all door states");
+    }
+
+    // 调试：打印所有门状态
+    [ContextMenu("Log All Door States")]
+    void LogAllDoorStates()
+    {
+        if (doorStates == null || doorStates.Count == 0)
+        {
+            Debug.Log("No door states saved.");
+            return;
+        }
+
+        Debug.Log("======== SAVED DOOR STATES ========");
+        foreach (var kvp in doorStates)
+        {
+            Debug.Log($"{kvp.Key}: {kvp.Value}");
+        }
     }
 
     // ==== 暂停功能 ====

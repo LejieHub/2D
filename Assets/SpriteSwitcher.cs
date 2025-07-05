@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // 添加这行
+using UnityEngine.SceneManagement;
 
 public class SpriteSwitcher : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class SpriteSwitcher : MonoBehaviour
     void Start()
     {
         // 从GameManager获取保存的状态
-        string doorID = $"{SceneManager.GetActiveScene().name}_{this.gameObject.name}";
+        string doorID = GenerateDoorID();
         bool savedState = GameManager.Instance.GetDoorState(doorID);
 
         if (savedState)
@@ -23,6 +23,13 @@ public class SpriteSwitcher : MonoBehaviour
         {
             SetInitialState();
         }
+    }
+
+    public string GenerateDoorID()
+    {
+        // 使用场景名+位置信息生成唯一ID（保留1位小数）
+        Vector3 pos = transform.position;
+        return $"{SceneManager.GetActiveScene().name}_{pos.x:F1}_{pos.y:F1}_{pos.z:F1}";
     }
 
     private void SetInitialState()
@@ -59,7 +66,7 @@ public class SpriteSwitcher : MonoBehaviour
         if (objectToShow != null) objectToShow.enabled = true;
 
         // 保存状态到GameManager
-        string doorID = $"{SceneManager.GetActiveScene().name}_{this.gameObject.name}";
+        string doorID = GenerateDoorID();
         GameManager.Instance.SaveDoorState(doorID, true);
     }
 
