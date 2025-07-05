@@ -11354,13 +11354,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3599188293435113556, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9070836597455557283, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 721160025}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3467295689310993304, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 243461535}
   m_SourcePrefab: {fileID: 100100000, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
 --- !u!1 &243461532 stripped
 GameObject:
@@ -11383,6 +11387,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9070836597455557283, guid: 2701b5ab7993ea142ab04bfccd7c25b3, type: 3}
   m_PrefabInstance: {fileID: 243461531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &243461535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243461532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3c0c8ef162e3e41aaca473e86d2761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  analogGlitchFeature: {fileID: 8423332462024838329, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}
+  digitalGlitchFeature: {fileID: -6002758341287532973, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}
+  effectDuration: 0.2
+  scanLineJitter: 0.1
+  verticalJump: 0.05
+  horizontalShake: 0.1
+  colorDrift: 0.5
+  digitalIntensity: 0.01
 --- !u!1001 &262648565
 PrefabInstance:
   m_ObjectHideFlags: 0
