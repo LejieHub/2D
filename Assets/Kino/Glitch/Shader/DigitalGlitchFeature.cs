@@ -39,6 +39,15 @@ public class DigitalGlitchFeature : ScriptableRendererFeature
         }
     }
 
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing && glitchPass != null)
+        {
+            glitchPass.Dispose();
+            glitchPass = null;
+        }
+    }
+
     class DigitalGlitchPass : ScriptableRenderPass
     {
         DigitalGlitchSettings settings;
@@ -46,28 +55,27 @@ public class DigitalGlitchFeature : ScriptableRendererFeature
         RenderTexture trash1;
         RenderTexture trash2;
         Texture2D noiseTex;
+        int screenWidth = -1;
+        int screenHeight = -1;
 
         public DigitalGlitchPass(DigitalGlitchSettings settings)
         {
             this.settings = settings;
             tempTexture.Init("_TempDigitalGlitch");
+
+            CreateNoiseTex();
+        }
+
+        void CreateNoiseTex()
+        {
+            noiseTex = new Texture2D(64, 32, TextureFormat.ARGB32, false);
+            noiseTex.wrapMode = TextureWrapMode.Clamp;
+            noiseTex.filterMode = FilterMode.Point;
+            noiseTex.hideFlags = HideFlags.DontSave;
         }
 
         void UpdateNoise()
         {
-            // 安全检查与重建
-            if (noiseTex == null || noiseTex.width != 64 || noiseTex.height != 32)
-            {
-                if (noiseTex != null)
-                    Object.DestroyImmediate(noiseTex); //销毁旧贴图
-
-                noiseTex = new Texture2D(64, 32, TextureFormat.ARGB32, false);
-                noiseTex.wrapMode = TextureWrapMode.Clamp;
-                noiseTex.filterMode = FilterMode.Point;
-                noiseTex.hideFlags = HideFlags.DontSave;
-            }
-
-
             Color c = RandomColor();
 
             for (int y = 0; y < noiseTex.height; y++)
@@ -87,21 +95,24 @@ public class DigitalGlitchFeature : ScriptableRendererFeature
             return new Color(Random.value, Random.value, Random.value, Random.value);
         }
 
-        void UpdateTrashTextures(int width, int height)
+        void UpdateTrashTexturesIfNeeded(int width, int height)
         {
             if (trash1 == null || trash1.width != width || trash1.height != height)
             {
-                if (trash1 != null) trash1.Release();
-                if (trash2 != null) trash2.Release();
+                ReleaseTrashTextures();
 
                 trash1 = new RenderTexture(width, height, 0);
                 trash2 = new RenderTexture(width, height, 0);
                 trash1.hideFlags = HideFlags.DontSave;
                 trash2.hideFlags = HideFlags.DontSave;
+
+                screenWidth = width;
+                screenHeight = height;
             }
 
             if (Time.frameCount % 13 == 0)
                 Graphics.Blit(null, trash1);
+
             if (Time.frameCount % 73 == 0)
                 Graphics.Blit(null, trash2);
         }
@@ -116,11 +127,8 @@ public class DigitalGlitchFeature : ScriptableRendererFeature
             var desc = renderingData.cameraData.cameraTargetDescriptor;
             cmd.GetTemporaryRT(tempTexture.id, desc, FilterMode.Bilinear);
 
-            int width = desc.width;
-            int height = desc.height;
-
             UpdateNoise();
-            UpdateTrashTextures(width, height);
+            UpdateTrashTexturesIfNeeded(desc.width, desc.height);
 
             settings.glitchMaterial.SetFloat("_Intensity", settings.intensity);
             settings.glitchMaterial.SetTexture("_NoiseTex", noiseTex);
@@ -135,6 +143,22 @@ public class DigitalGlitchFeature : ScriptableRendererFeature
 
         public override void FrameCleanup(CommandBuffer cmd)
         {
+            cmd.ReleaseTemporaryRT(tempTexture.id); // 仅释放临时 RT
+        }
+
+        public void Dispose()
+        {
+            ReleaseTrashTextures();
+
+            if (noiseTex != null)
+            {
+                Object.DestroyImmediate(noiseTex);
+                noiseTex = null;
+            }
+        }
+
+        void ReleaseTrashTextures()
+        {
             if (trash1 != null)
             {
                 trash1.Release();
@@ -148,13 +172,6 @@ public class DigitalGlitchFeature : ScriptableRendererFeature
                 Object.DestroyImmediate(trash2);
                 trash2 = null;
             }
-
-            if (noiseTex != null)
-            {
-                Object.DestroyImmediate(noiseTex);
-                noiseTex = null;
-            }
         }
-
     }
 }
