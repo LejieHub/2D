@@ -58,11 +58,15 @@ public class DigitalGlitchFeature : ScriptableRendererFeature
             // 安全检查与重建
             if (noiseTex == null || noiseTex.width != 64 || noiseTex.height != 32)
             {
+                if (noiseTex != null)
+                    Object.DestroyImmediate(noiseTex); //销毁旧贴图
+
                 noiseTex = new Texture2D(64, 32, TextureFormat.ARGB32, false);
                 noiseTex.wrapMode = TextureWrapMode.Clamp;
                 noiseTex.filterMode = FilterMode.Point;
                 noiseTex.hideFlags = HideFlags.DontSave;
             }
+
 
             Color c = RandomColor();
 
@@ -134,14 +138,23 @@ public class DigitalGlitchFeature : ScriptableRendererFeature
             if (trash1 != null)
             {
                 trash1.Release();
+                Object.DestroyImmediate(trash1);
                 trash1 = null;
             }
 
             if (trash2 != null)
             {
                 trash2.Release();
+                Object.DestroyImmediate(trash2);
                 trash2 = null;
             }
+
+            if (noiseTex != null)
+            {
+                Object.DestroyImmediate(noiseTex);
+                noiseTex = null;
+            }
         }
+
     }
 }
