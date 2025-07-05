@@ -49,6 +49,9 @@ TagManager:
   - name: Midground
     uniqueID: 2163809733
     locked: 0
+  - name: IMAGE
+    uniqueID: 2952983453
+    locked: 0
   - name: Character&Platform
     uniqueID: 3647015871
     locked: 0
