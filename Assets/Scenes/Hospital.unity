@@ -16380,7 +16380,7 @@ RectTransform:
   m_GameObject: {fileID: 584541781}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 22.867321, y: 1.8312, z: 1}
+  m_LocalScale: {x: 22.867321, y: 3.03, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1442163255}
@@ -17645,7 +17645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1166708092260615610, guid: ad565406d45f456498cb72e5dc872807, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2490751043257648221, guid: ad565406d45f456498cb72e5dc872807, type: 3}
       propertyPath: fadeDuration
@@ -17673,11 +17673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7243389603885958850, guid: ad565406d45f456498cb72e5dc872807, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.099976
+      value: -13.1
       objectReference: {fileID: 0}
     - target: {fileID: 7243389603885958850, guid: ad565406d45f456498cb72e5dc872807, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8499756
+      value: -3.71
       objectReference: {fileID: 0}
     - target: {fileID: 7243389603885958850, guid: ad565406d45f456498cb72e5dc872807, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18819,7 +18819,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_text
-      value: Press Space to jump over
+      value: "Hold <b>Space</b> \nto jump higher!"
       objectReference: {fileID: 0}
     - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_fontSize
@@ -18848,6 +18848,14 @@ PrefabInstance:
     - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_fontSizeBase
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4791759299351454843, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_Pivot.x
@@ -18975,7 +18983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8620818109977527732, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20852,7 +20860,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44, y: -846}
+  m_AnchoredPosition: {x: 44, y: -793}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469399809
@@ -63958,11 +63966,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7243389603885958850, guid: ad565406d45f456498cb72e5dc872807, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.1099854
+      value: -24.23
       objectReference: {fileID: 0}
     - target: {fileID: 7243389603885958850, guid: ad565406d45f456498cb72e5dc872807, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8499756
+      value: -4.43
       objectReference: {fileID: 0}
     - target: {fileID: 7243389603885958850, guid: ad565406d45f456498cb72e5dc872807, type: 3}
       propertyPath: m_LocalPosition.z
@@ -64197,13 +64205,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_text
-      value: 'Press space to jump
-
-        Press wasd to walk'
+      value: "Press <b>Space</b> to jump\r\nUse <b>WASD</b> to move\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_fontSize
-      value: 150
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_margin.z
@@ -64215,7 +64221,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_fontSizeBase
-      value: 150
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221317997325319898, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4791759299351454843, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_Pivot.x
@@ -64359,7 +64373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6192641623145222586, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -840
+      value: -857
       objectReference: {fileID: 0}
     - target: {fileID: 8620818109977527732, guid: 5720b0cc155a9fd44a17d010d112c332, type: 3}
       propertyPath: m_Name
