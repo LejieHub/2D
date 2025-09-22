@@ -27248,6 +27248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pauseui
       objectReference: {fileID: 0}
+    - target: {fileID: 1811246573948422192, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1816125055756778249, guid: ebebc2c90e59cf44d92313d681de2629, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -27446,6 +27450,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 705586436284080861, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1749187843}
+    - target: {fileID: 705586436284080861, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 705586436284080861, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 705586436284080861, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 802404324144566700, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -27496,15 +27516,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 802404324144566700, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 802404324144566700, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 802404324144566700, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 802404324144566700, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -27541,6 +27561,10 @@ PrefabInstance:
     - target: {fileID: 6881311957509569055, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
       propertyPath: m_Name
       value: pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881311957509569055, guid: dfdc0500c9143ab44a0658649ca9191f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
