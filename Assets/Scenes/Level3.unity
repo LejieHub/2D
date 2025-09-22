@@ -81154,10 +81154,42 @@ MonoBehaviour:
   - {fileID: 1425354093}
   - {fileID: 1594865230}
   - {fileID: 749979214}
-  rightObjectsToActivate: []
-  rightTilemapsToEnable: []
-  rightObjectsToDeactivate: []
-  rightTilemapsToDisable: []
+  rightObjectsToActivate:
+  - {fileID: 1161902096}
+  - {fileID: 677730497}
+  - {fileID: 1741375290}
+  - {fileID: 908583299}
+  - {fileID: 1783612000}
+  - {fileID: 841800685}
+  - {fileID: 669587437}
+  - {fileID: 1499109398}
+  - {fileID: 1058962003}
+  - {fileID: 1425354089}
+  - {fileID: 49656316}
+  - {fileID: 741887918}
+  - {fileID: 1270015922}
+  - {fileID: 1594865226}
+  - {fileID: 749979210}
+  - {fileID: 231476645}
+  - {fileID: 1283948512}
+  - {fileID: 567928583}
+  - {fileID: 1416202385}
+  rightTilemapsToEnable:
+  - {fileID: 1161902099}
+  - {fileID: 1741375294}
+  - {fileID: 1425354093}
+  - {fileID: 1594865230}
+  - {fileID: 749979214}
+  rightObjectsToDeactivate:
+  - {fileID: 951130047}
+  - {fileID: 2107892268}
+  - {fileID: 87451003}
+  - {fileID: 2124788326}
+  - {fileID: 1857757781}
+  - {fileID: 1444784667}
+  - {fileID: 584768721}
+  rightTilemapsToDisable:
+  - {fileID: 951130049}
 --- !u!1001 &1667311401
 PrefabInstance:
   m_ObjectHideFlags: 0
